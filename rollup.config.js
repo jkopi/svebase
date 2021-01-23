@@ -1,4 +1,6 @@
 import svelte from 'rollup-plugin-svelte';
+import replace from '@rollup/plugin-replace';
+import dotenv from 'dotenv';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
@@ -8,6 +10,8 @@ import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
+
+dotenv.config();
 
 function serve() {
 	let server;
@@ -45,6 +49,14 @@ export default {
 				// enable run-time checks when not in production
 				dev: !production
 			}
+		}),
+		replace({
+			API_KEY: JSON.stringify(process.env.API_KEY),
+			AUTH_DOMAIN: JSON.stringify(process.env.AUTH_DOMAIN),
+			PROJECT_ID: JSON.stringify(process.env.PROJECT_ID),
+			STORAGE_BUCKET: JSON.stringify(process.env.STORAGE_BUCKET),
+			MESSAGING_SENDER_ID: JSON.stringify(process.env.MESSAGING_SENDER_ID),
+			APP_ID: JSON.stringify(process.env.APP_ID)
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance

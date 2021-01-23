@@ -1,15 +1,21 @@
 <script lang="ts">
-  import Container from "./components/Container.svelte";
-  export let name: string;
-  export let numbar: number;
+  import { Router, Link, Route } from "svelte-routing";
+  import Home from "./views/Home.svelte";
+  import Conf from "./config/firebase";
+
+  function clog() {
+    console.log(Conf);
+  }
 </script>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <h4>de numbar is {numbar}</h4>
-  <Container />
-</main>
+<Router>
+  <nav>
+    <Link to="/">Home</Link>
+    <button on:click={clog} />
+  </nav>
+  <div>
+    <Route path="/" component={Home} />
+  </div>
+</Router>
 
-<style>
-  /** */
-</style>
+<style></style>
