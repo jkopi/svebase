@@ -1,10 +1,12 @@
-<script>
-  // your script goes here
+<script lang="ts">
+  export let photoURL: string;
+  export let displayName: string;
 </script>
 
-<!-- markup (zero or more items) goes here -->
-<main>I am home</main>
+<main>
+  <img src={photoURL} alt="avatar" />
+  <p>{displayName}</p>
+</main>
 
 <style>
-  /* your styles go here */
 </style>
