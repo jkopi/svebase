@@ -3,14 +3,20 @@
   import Container from "./components/Container.svelte";
   import Navigation from "./components/Navigation.svelte";
   import RecipeList from "./components/RecipeList.svelte";
-  import firebase, { auth, loggedIn$, app } from "./config/firebase";
+  import { auth, googleProvider } from "./config/firebase";
+  import { authState } from "rxfire/auth";
   import Home from "./views/Home.svelte";
 
-  const user = loggedIn$;
+  let user;
+
+  const unsubscribe = authState(auth).subscribe((u) => (user = u));
 
   const signIn = () => {
-    const authProvider = new firebase.auth.GoogleAuthProvider();
-    app.auth().signInWithPopup(authProvider);
+    auth.signInWithPopup(googleProvider);
+  };
+
+  const signOut = () => {
+    auth.signOut();
   };
 </script>
 
@@ -18,8 +24,8 @@
   <Navigation>
     <Link to="/">Home</Link>
     <Link to="/recipes">Recipes</Link>
-    {#if $user}
-      <button on:click={() => auth.signOut()}>logout</button>
+    {#if user}
+      <button on:click={() => signOut()}>logout</button>
     {:else}
       <button on:click={signIn}>login</button>
     {/if}
