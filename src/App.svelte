@@ -1,41 +1,38 @@
 <script lang="ts">
   import { Router, Link, Route } from "svelte-routing";
-  import { auth, googleProvider } from "./config/firebase";
-  import { authState } from "rxfire/auth";
-  import Home from "./views/Home.svelte";
-  import Conf from "./config/firebase";
   import Container from "./components/Container.svelte";
+  import Navigation from "./components/Navigation.svelte";
+  import RecipeList from "./components/RecipeList.svelte";
+  import firebase, { auth, loggedIn$, app } from "./config/firebase";
+  import Home from "./views/Home.svelte";
 
-  let user;
+  const user = loggedIn$;
 
-  const unsubscribe = authState(auth).subscribe(
-    (u: firebase.default.User) => (user = u)
-  );
-
-  function login() {
-    auth.signInWithPopup(googleProvider);
-  }
-
-  function clog() {
-    console.log(user);
-  }
+  const signIn = () => {
+    const authProvider = new firebase.auth.GoogleAuthProvider();
+    app.auth().signInWithPopup(authProvider);
+  };
 </script>
 
 <Router>
-  <nav>
+  <Navigation>
     <Link to="/">Home</Link>
-    <button on:click={clog}>log</button>
-    {#if user}
+    <Link to="/recipes">Recipes</Link>
+    {#if $user}
       <button on:click={() => auth.signOut()}>logout</button>
     {:else}
-      <button on:click={login}>login</button>
+      <button on:click={signIn}>login</button>
     {/if}
-  </nav>
-  <div>
+  </Navigation>
+  <Container>
     <Route path="/">
-      <Home {...user} />
+      <Home />
     </Route>
-  </div>
+    <Route>
+      <RecipeList />
+    </Route>
+  </Container>
 </Router>
 
-<style></style>
+<style>
+</style>
