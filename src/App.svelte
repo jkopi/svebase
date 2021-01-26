@@ -1,35 +1,44 @@
 <script lang="ts">
-  export let name: string;
-  export let numbar: number;
+  import { Router, Link, Route } from "svelte-routing";
+  import Container from "./components/Container.svelte";
+  import Navigation from "./components/Navigation.svelte";
+  import RecipeList from "./components/RecipeList.svelte";
+  import { auth, googleProvider } from "./config/firebase";
+  import { authState } from "rxfire/auth";
+  import Home from "./views/Home.svelte";
+
+  let user;
+
+  const unsubscribe = authState(auth).subscribe((u) => (user = u));
+
+  const signIn = () => {
+    auth.signInWithPopup(googleProvider);
+  };
+
+  const signOut = () => {
+    auth.signOut();
+  };
 </script>
 
-<main>
-  <h1>Hello {name}!</h1>
-  <h4>de numbar is {numbar}</h4>
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
-</main>
+<Router>
+  <Navigation>
+    <Link to="/">Home</Link>
+    <Link to="/recipes">Recipes</Link>
+    {#if user}
+      <button on:click={() => signOut()}>logout</button>
+    {:else}
+      <button on:click={signIn}>login</button>
+    {/if}
+  </Navigation>
+  <Container>
+    <Route path="/">
+      <Home />
+    </Route>
+    <Route>
+      <RecipeList />
+    </Route>
+  </Container>
+</Router>
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
 </style>

@@ -10,8 +10,12 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-typescript": "^6.1.0",
     "@tsconfig/svelte": "^1.0.10",
+    "autoprefixer": "^10.2.3",
+    "dotenv": "^8.2.0",
+    "postcss-nesting": "^7.0.1",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -24,6 +28,10 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.0"
+    "firebase": "^8.2.4",
+    "rxfire": "^4.0.0",
+    "rxjs": "^6.6.3",
+    "sirv-cli": "^1.0.0",
+    "svelte-routing": "^1.5.0"
   }
 }
