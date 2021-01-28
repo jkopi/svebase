@@ -1,8 +1,10 @@
 <script lang="ts">
+  import RecipeForm from "../components/RecipeForm.svelte";
+  import RecipeGrid from "../components/RecipeGrid/RecipeGrid.svelte";
 </script>
 
 <main>
-  <button on:click={() => console.log("asd")}>click</button>
+  <RecipeForm />
 </main>
 
 <style>

@@ -2,12 +2,13 @@
   import { Router, Link, Route } from "svelte-routing";
   import Container from "./components/Container.svelte";
   import Navigation from "./components/Navigation.svelte";
-  import RecipeList from "./components/RecipeList.svelte";
   import { auth, googleProvider } from "./config/firebase";
   import { authState } from "rxfire/auth";
   import Home from "./views/Home.svelte";
+  import LoginButton from "./components/LoginButton.svelte";
 
   let user;
+  let url: string;
 
   const unsubscribe = authState(auth).subscribe((u) => (user = u));
 
@@ -20,22 +21,18 @@
   };
 </script>
 
-<Router>
+<Router {url}>
   <Navigation>
     <Link to="/">Home</Link>
-    <Link to="/recipes">Recipes</Link>
     {#if user}
       <button on:click={() => signOut()}>logout</button>
     {:else}
-      <button on:click={signIn}>login</button>
+      <LoginButton on:login={signIn} />
     {/if}
   </Navigation>
   <Container>
     <Route path="/">
       <Home />
-    </Route>
-    <Route>
-      <RecipeList />
     </Route>
   </Container>
 </Router>

@@ -1,8 +1,6 @@
-<div>
-  <nav class="navigator">
-    <slot />
-  </nav>
-</div>
+<nav class="navigator">
+  <slot />
+</nav>
 
 <style>
   .navigator {
