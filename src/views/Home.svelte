@@ -1,10 +1,9 @@
 <script lang="ts">
-  import RecipeForm from "../components/RecipeForm.svelte";
-  import RecipeGrid from "../components/RecipeGrid/RecipeGrid.svelte";
+  import RecipeList from "../components/RecipeList.svelte";
 </script>
 
 <main>
-  <RecipeForm />
+  <RecipeList />
 </main>
 
 <style>
