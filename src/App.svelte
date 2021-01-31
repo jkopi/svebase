@@ -8,12 +8,11 @@
   import LoginButton from "./components/LoginButton.svelte";
 
   let user;
-  let url: string;
 
   const unsubscribe = authState(auth).subscribe((u) => (user = u));
 </script>
 
-<Router {url}>
+<Router>
   <Navigation>
     <Link to="/">Home</Link>
     {#if user}
