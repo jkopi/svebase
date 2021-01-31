@@ -2,7 +2,7 @@
   import { Router, Link, Route } from "svelte-routing";
   import Container from "./components/Container.svelte";
   import Navigation from "./components/Navigation.svelte";
-  import { auth, googleProvider } from "./config/firebase";
+  import { auth, googleProvider, signIn, signOut } from "./config/firebase";
   import { authState } from "rxfire/auth";
   import Home from "./views/Home.svelte";
   import LoginButton from "./components/LoginButton.svelte";
@@ -11,14 +11,6 @@
   let url: string;
 
   const unsubscribe = authState(auth).subscribe((u) => (user = u));
-
-  const signIn = () => {
-    auth.signInWithPopup(googleProvider);
-  };
-
-  const signOut = () => {
-    auth.signOut();
-  };
 </script>
 
 <Router {url}>

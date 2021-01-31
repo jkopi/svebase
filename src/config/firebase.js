@@ -18,6 +18,14 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const db = firebase.firestore();
 
+export const signIn = () => {
+  auth.signInWithPopup(googleProvider);
+};
+
+export const signOut = () => {
+  auth.signOut();
+};
+
 //const app = firebase.initializeApp(config);
 //const auth = firebase.auth(app);
 //const googleProvider = new firebase.auth.GoogleAuthProvider();
