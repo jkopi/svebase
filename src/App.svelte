@@ -2,7 +2,7 @@
   import { Router, Link, Route } from "svelte-routing";
   import Container from "./components/Container.svelte";
   import Navigation from "./components/Navigation.svelte";
-  import { auth, googleProvider, signIn, signOut } from "./config/firebase";
+  import { auth, signIn, signOut } from "./config/firebase";
   import { authState } from "rxfire/auth";
   import Home from "./views/Home.svelte";
   import LoginButton from "./components/LoginButton.svelte";

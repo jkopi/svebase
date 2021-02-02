@@ -4,9 +4,6 @@
   import { authState } from "rxfire/auth";
   import GridItem from "./GridItem.svelte";
 
-  //const query = db.collection("recipes").where("uid", "==", user.uid);
-  //const recipes = collectionData(query, "id");
-
   onMount(() => {
     console.log(authState);
   });
