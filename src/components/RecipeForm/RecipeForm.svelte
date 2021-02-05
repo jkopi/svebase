@@ -1,17 +1,20 @@
 <script lang="ts">
   import Form from "@svelteschool/svelte-forms";
   import IngredientInput from "./IngredientInput.svelte";
+  import { auth } from "../../config/firebase";
   let values: any;
 </script>
 
 <Form bind:values>
   <fieldset>
-    <input
-      class="name-input"
-      placeholder="Recipe name"
-      type="text"
-      name="recipeName"
-    />
+    <label>
+      <input
+        class="name-input"
+        placeholder="Recipe name"
+        type="text"
+        name="recipeName"
+      />
+    </label>
   </fieldset>
   <div class="input">
     <h3>Ingredients</h3>
@@ -26,11 +29,16 @@
 
   <label for="description">Description</label>
   <fieldset>
-    <textarea name="description" />
+    <textarea id="description" name="description"></textarea>
   </fieldset>
 </Form>
 <pre>{JSON.stringify(values, undefined, 1)}</pre>
-<button on:click={() => (values = { ...values, firstName: "hello wörld" })}>
+<button
+  on:click={() => {
+    console.log(auth.currentUser);
+    values = { ...values, firstName: "hello world" };
+  }}
+>
   Create
 </button>
 

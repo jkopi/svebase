@@ -7,7 +7,9 @@
 
 <style>
   .login-btn {
-    box-shadow: 1px 1px black;
-    width: 5rem;
+		background: white;
+		border-color: #999999;
+	  width: 8rem;
+	  height: 2rem;
   }
 </style>

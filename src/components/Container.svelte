@@ -10,7 +10,7 @@
     /*display: flex;*/
     /*align-items: center;*/
     /*justify-content: center;*/
-    border: 1px solid black;
+    border: 1px solid GREY;
   }
 
   @media only screen and (max-width: 1070px) {
