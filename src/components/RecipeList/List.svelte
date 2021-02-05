@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
 
   let dataz = [
     {
@@ -47,18 +47,18 @@
       description: "easy omelette with paprika and onions",
       createdAt: new Date(),
       uid: "kaytid",
-    }
+    },
   ];
 
   onMount(() => {
-    console.log(JSON.stringify(dataz))
+    console.log(JSON.stringify(dataz));
   });
 </script>
 
 <ul>
-	{#each dataz as recipe}
-		<li>{recipe.name}, {recipe.createdAt}</li>
-	{/each}
+  {#each dataz as recipe}
+    <li>{recipe.name}, {recipe.createdAt}</li>
+  {/each}
 </ul>
 
 <style>
