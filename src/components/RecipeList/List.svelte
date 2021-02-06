@@ -55,11 +55,15 @@
   });
 </script>
 
-<ul>
+<div class="flex flex-col">
   {#each dataz as recipe}
-    <li>{recipe.name}, {recipe.createdAt}</li>
+    <div
+      class="py-8 px-4 m-1 w-96 border border-green-500 shadow-lg rounded-xl"
+    >
+      <p>{recipe.name}, {recipe.createdAt}</p>
+    </div>
   {/each}
-</ul>
+</div>
 
 <style>
 </style>

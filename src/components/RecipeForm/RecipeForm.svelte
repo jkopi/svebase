@@ -29,7 +29,7 @@
 
   <label for="description">Description</label>
   <fieldset>
-    <textarea id="description" name="description"></textarea>
+    <textarea id="description" name="description" />
   </fieldset>
 </Form>
 <pre>{JSON.stringify(values, undefined, 1)}</pre>
