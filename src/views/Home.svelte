@@ -1,8 +1,9 @@
 <script lang="ts">
+    import RecipeList from "../components/RecipeList/List.svelte";
 </script>
 
 <main>
-  <button on:click={() => console.log("asd")}>click</button>
+	<RecipeList/>
 </main>
 
 <style>

@@ -28,10 +28,13 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@svelteschool/svelte-forms": "^0.7.0",
     "firebase": "^8.2.4",
     "rxfire": "^4.0.0",
     "rxjs": "^6.6.3",
     "sirv-cli": "^1.0.0",
+    "svelte-fa": "^2.2.0",
     "svelte-routing": "^1.5.0"
   }
 }

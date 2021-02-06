@@ -4,7 +4,18 @@
 
 <style>
   .box {
-    width: 70%;
-    border: 1px solid black;
+    padding: 0;
+    width: 1070px;
+    margin: auto;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    border: 1px solid GREY;
+  }
+
+  @media only screen and (max-width: 1070px) {
+    .box {
+      width: 100%;
+    }
   }
 </style>
