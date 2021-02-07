@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-
+import { authState } from "rxfire/auth";
 const config = {
   apiKey: API_KEY,
   authDomain: AUTH_DOMAIN,
@@ -29,6 +29,10 @@ export const signOut = () => {
     console.log("Signed out");
   });
 };
+
+let user;
+
+const unsubscribe = authState(auth).subscribe((u) => (user = u));
 
 //const app = firebase.initializeApp(config);
 //const auth = firebase.auth(app);

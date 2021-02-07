@@ -1,42 +1,29 @@
 <script lang="ts">
-  import { Router, Link, Route, link } from "svelte-routing";
-  import Container from "./components/Container.svelte";
-  import Navigation from "./components/Navigation.svelte";
+  import Router from "svelte-spa-router";
+  import Navigation from "./components/Navigation/Navigation.svelte";
   import { auth, signIn, signOut } from "./config/firebase";
   import { authState } from "rxfire/auth";
-  import Home from "./views/Home.svelte";
-  import LoginButton from "./components/LoginButton.svelte";
-  import NotFound from "./views/NotFound.svelte";
-  import Icon from "./components/Icon.svelte";
-  import { faHome } from "@fortawesome/free-solid-svg-icons";
+  import { filter } from "rxjs/operators";
+  import routes from "./components/Navigation/Routes";
+  import { onMount } from "svelte";
 
-  let user;
+  const loggedUser = authState(auth)
+    .pipe(filter((u) => u !== null))
+    .subscribe((u) => console.log("logged in user: ", u));
 
-  const unsubscribe = authState(auth).subscribe((u) => (user = u));
+  onMount(() => {
+    console.log(loggedUser);
+  });
 </script>
 
-<Router>
-  <Navigation>
-    <a href="/" class="link" use:link>
-      <Icon icon={faHome} iconSize="2x" iconColor="orange" />
-    </a>
-    {#if user}
-      <button on:click={() => signOut()}>logout</button>
-    {:else}
-      <LoginButton on:login={signIn} />
-    {/if}
-  </Navigation>
-  <Container>
-    <Route path="/">
-      <Home />
-    </Route>
-    <Route component={NotFound} />
-  </Container>
-</Router>
+<main class="antialiased bg-gray-200">
+  {#if loggedUser}
+    <Navigation />
+    <Router {routes} />
+  {:else}
+    <p>not authenticated</p>
+  {/if}
+</main>
 
 <style>
-  .link {
-    color: black;
-    text-decoration: none;
-  }
 </style>
