@@ -9,8 +9,10 @@
 
 <button
   class="bg-amber-700 hover:bg-amber-800 text-gray-800 font-bold py-2 px-8 rounded inline-flex items-center"
-  on:click={() => dispatch("login")}
+  on:click={() => dispatch("auth")}
 >
   <Icon icon={faUser} iconColor="black" />
-  <span>Login</span>
+  <span>
+    <slot>Login</slot>
+  </span>
 </button>

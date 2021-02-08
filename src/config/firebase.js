@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { authState } from "rxfire/auth";
+import { filter } from "rxjs/operators";
 const config = {
   apiKey: API_KEY,
   authDomain: AUTH_DOMAIN,
@@ -18,21 +19,23 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const db = firebase.firestore();
 
+let user;
+//
+//const unsubscribe = authState(auth).subscribe((u) => (user = u));
+
+export const loggedUser = authState(auth)
+  .pipe(filter((u) => u !== null))
+  .subscribe((u) => console.log("logged in user: ", u));
+
 export const signIn = () => {
   auth.signInWithPopup(googleProvider).then(r => {
-    console.log("Logged in:", r.user)
+    user = r.user;
   });
 };
 
 export const signOut = () => {
-  auth.signOut().then(_ => {
-    console.log("Signed out");
-  });
+  auth.signOut()
 };
-
-let user;
-
-const unsubscribe = authState(auth).subscribe((u) => (user = u));
 
 //const app = firebase.initializeApp(config);
 //const auth = firebase.auth(app);
