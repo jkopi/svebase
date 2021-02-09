@@ -1,13 +1,18 @@
 <script lang="ts">
+  import { faUser } from "@fortawesome/free-solid-svg-icons";
+
   import { createEventDispatcher } from "svelte";
+  import Icon from "./Icon.svelte";
+
   const dispatch = createEventDispatcher();
 </script>
 
-<button class="login-btn" on:click={() => dispatch("login")}>Login</button>
-
-<style>
-  .login-btn {
-    box-shadow: 1px 1px black;
-    width: 5rem;
-  }
-</style>
+<button
+  class="bg-amber-700 hover:bg-amber-800 text-gray-800 font-bold py-2 px-8 rounded inline-flex items-center"
+  on:click={() => dispatch("auth")}
+>
+  <Icon icon={faUser} iconColor="black" />
+  <span>
+    <slot>Login</slot>
+  </span>
+</button>

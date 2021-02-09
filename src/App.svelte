@@ -1,41 +1,10 @@
 <script lang="ts">
-  import { Router, Link, Route } from "svelte-routing";
-  import Container from "./components/Container.svelte";
-  import Navigation from "./components/Navigation.svelte";
-  import { auth, googleProvider } from "./config/firebase";
-  import { authState } from "rxfire/auth";
-  import Home from "./views/Home.svelte";
-  import LoginButton from "./components/LoginButton.svelte";
-
-  let user;
-  let url: string;
-
-  const unsubscribe = authState(auth).subscribe((u) => (user = u));
-
-  const signIn = () => {
-    auth.signInWithPopup(googleProvider);
-  };
-
-  const signOut = () => {
-    auth.signOut();
-  };
+  import Router from "svelte-spa-router";
+  import Navigation from "./components/Navigation/Navigation.svelte";
+  import routes from "./components/Navigation/Routes";
 </script>
 
-<Router {url}>
-  <Navigation>
-    <Link to="/">Home</Link>
-    {#if user}
-      <button on:click={() => signOut()}>logout</button>
-    {:else}
-      <LoginButton on:login={signIn} />
-    {/if}
-  </Navigation>
-  <Container>
-    <Route path="/">
-      <Home />
-    </Route>
-  </Container>
-</Router>
-
-<style>
-</style>
+<main class="antialiased bg-gray-200">
+  <Navigation />
+  <Router {routes} />
+</main>

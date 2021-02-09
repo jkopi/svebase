@@ -1,0 +1,95 @@
+<script lang="ts">
+  import {
+    faHamburger,
+    faUserAlt,
+    faUtensils,
+  } from "@fortawesome/free-solid-svg-icons";
+  import { onMount } from "svelte";
+  import { link } from "svelte-spa-router";
+  import { signIn, signOut, auth } from "../../config/firebase";
+  import Icon from "../Icon.svelte";
+  import LoginButton from "../LoginButton.svelte";
+  import AuthSelector from "../AuthSelector.svelte";
+
+  interface User {
+    displayName: string;
+    uid: string;
+  }
+
+  let currentUser: User | null;
+
+  auth.onAuthStateChanged((u) => (currentUser = u));
+
+  onMount(() => {
+    console.log(currentUser);
+  });
+</script>
+
+<section>
+  <header
+    class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-6"
+  >
+    <div class="flex-1 flex justify-between items-center">
+      <a href="/" class="link" use:link>
+        <Icon icon={faUtensils} iconColor="red" iconSize="lg" />
+      </a>
+    </div>
+    <label for="menu-toggle" class="cursor-pointer lg:hidden block">
+      <Icon icon={faHamburger} iconSize="lg" iconColor="orange" />
+    </label>
+    <input type="checkbox" class="hidden" id="menu-toggle" />
+    <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+      <!--
+        TODO: 
+        - Add routings for recipe views
+      -->
+      <nav>
+        {#if currentUser}
+          <ul
+            class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0"
+          >
+            <li>
+              <a
+                href="/"
+                class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
+                >My recipes</a
+              >
+            </li>
+            <li>
+              <a
+                href="/"
+                class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
+                >Create a recipe</a
+              >
+            </li>
+          </ul>
+        {:else}
+          <ul
+            class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0"
+          >
+            <li
+              class="lg:p-4 py-3 px-0 block border-b-2 border-transparent cursor-default"
+            >
+              <AuthSelector />
+            </li>
+          </ul>
+        {/if}
+      </nav>
+      {#if currentUser === null}
+        <LoginButton on:auth={signIn} />
+      {:else}
+        <LoginButton on:auth={signOut}>Log out</LoginButton>
+      {/if}
+    </div>
+  </header>
+</section>
+
+<style>
+  #menu-toggle:checked + #menu {
+    display: block;
+  }
+  .link {
+    color: black;
+    text-decoration: none;
+  }
+</style>
