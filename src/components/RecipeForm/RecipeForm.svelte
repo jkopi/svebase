@@ -5,33 +5,35 @@
   let values: any;
 </script>
 
-<Form bind:values>
-  <fieldset>
-    <label>
-      <input
-        class="name-input"
-        placeholder="Recipe name"
-        type="text"
-        name="recipeName"
-      />
-    </label>
-  </fieldset>
-  <div class="input">
-    <h3>Ingredients</h3>
-    <IngredientInput />
-    <button
-      type="button"
-      on:click={() => {
-        console.log("row yes");
-      }}>Add row</button
-    >
-  </div>
+<div class="container">
+  <Form bind:values>
+    <fieldset>
+      <label>
+        <input
+          class="name-input"
+          placeholder="Recipe name"
+          type="text"
+          name="recipeName"
+        />
+      </label>
+    </fieldset>
+    <div class="input">
+      <h3>Ingredients</h3>
+      <IngredientInput />
+      <button
+        type="button"
+        on:click={() => {
+          console.log("row yes");
+        }}>Add row</button
+      >
+    </div>
 
-  <label for="description">Description</label>
-  <fieldset>
-    <textarea id="description" name="description" />
-  </fieldset>
-</Form>
+    <label for="description">Description</label>
+    <fieldset>
+      <textarea id="description" name="description" />
+    </fieldset>
+  </Form>
+</div>
 <pre>{JSON.stringify(values, undefined, 1)}</pre>
 <button
   on:click={() => {
