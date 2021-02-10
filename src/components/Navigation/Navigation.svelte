@@ -10,11 +10,7 @@
   import Icon from "../Icon.svelte";
   import LoginButton from "../LoginButton.svelte";
   import AuthSelector from "../AuthSelector.svelte";
-
-  interface User {
-    displayName: string;
-    uid: string;
-  }
+  import type { User } from "../../interfaces/User";
 
   let currentUser: User | null;
 
@@ -50,14 +46,21 @@
           >
             <li>
               <a
-                href="/"
+                href="/#/user/{currentUser.uid}"
+                class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
+                >Profile</a
+              >
+            </li>
+            <li>
+              <a
+                href="/#/recipes"
                 class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
                 >My recipes</a
               >
             </li>
             <li>
               <a
-                href="/"
+                href="/#/create"
                 class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
                 >Create a recipe</a
               >
@@ -75,9 +78,7 @@
           </ul>
         {/if}
       </nav>
-      {#if currentUser === null}
-        <LoginButton on:auth={signIn} />
-      {:else}
+      {#if currentUser}
         <LoginButton on:auth={signOut}>Log out</LoginButton>
       {/if}
     </div>

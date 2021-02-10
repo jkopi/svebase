@@ -1,15 +1,8 @@
 <script lang="ts">
-  import { auth, loggedIn$ } from "../config/firebase";
-
-  export let displayName;
-  export let photoURL;
 </script>
 
-<main>
-  {displayName}
-  <img src={photoURL} alt="my face" />
-  <button on:click={() => console.log("asd")}>click</button>
-</main>
-
-<style>
-</style>
+<div class="md:container md:mx-auto">
+  <div>
+    <h1>HELLO</h1>
+  </div>
+</div>

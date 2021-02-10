@@ -1,14 +1,10 @@
 <script lang="ts">
+  import Icon from "./Icon.svelte";
   import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
   import { fade } from "svelte/transition";
-  import Icon from "./Icon.svelte";
+  import { signIn } from "../config/firebase";
 
-  let isAuthenticated: Boolean = false;
   let isOpen: Boolean = false;
-
-  export const googleSignIn = () => {
-    alert("xaxaxa");
-  };
 </script>
 
 <div class="relative">
@@ -34,15 +30,15 @@
       class="absolute right-2 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl"
       transition:fade
     >
-      <a
-        href="#"
-        class="block px-4 py-2 text-gray-800 hover:bg-orange-700 hover:text-white"
-        >New user</a
+      <span
+        on:click={() => console.log("TODO: new user creation")}
+        class="block px-4 py-2 cursor-pointer text-gray-800 hover:bg-orange-700 hover:text-white"
+        >New user</span
       >
-      <a
-        href="#"
-        class="block px-4 py-2 text-gray-800 hover:bg-orange-700 hover:text-white"
-        >Sign in with google</a
+      <span
+        on:click={() => signIn()}
+        class="block px-4 py-2 cursor-pointer text-gray-800 hover:bg-orange-700 hover:text-white"
+        >Sign in with google</span
       >
     </div>
   {/if}

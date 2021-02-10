@@ -2,20 +2,7 @@ import { db } from './config/firebase'
 import { collectionData } from 'rxfire/firestore'
 import type firebase from 'firebase/app'
 import { startWith } from 'rxjs/operators'
-
-interface ingredient {
-  quantity: number;
-  volume: string;
-  ingredient: string;
-}
-
-export interface Recipe {
-  name: string;
-  ingredients: Array<ingredient>
-  description?: string;
-  createdAt?: Date;
-  uid: string;
-}
+import type { Recipe } from './interfaces/Recipe'
 
 const recipeCollection = db.collection("recipe")
 const query = db.collection("recipe").orderBy("uid");
