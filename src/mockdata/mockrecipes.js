@@ -91,4 +91,96 @@ export default [
     createdAt: new Date(),
     uid: "kaytid",
   },
+  {
+    name: "Pancakes",
+    ingredients: [
+      {
+        quantity: 4,
+        volume: "whole",
+        ingredient: "Egg",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Paprika",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Onion",
+      },
+    ],
+    description: "very good pancake recipe omg amazing",
+    createdAt: new Date(),
+    uid: "kaytid",
+  },
+  {
+    name: "Pancakes",
+    ingredients: [
+      {
+        quantity: 4,
+        volume: "whole",
+        ingredient: "Egg",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Paprika",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Onion",
+      },
+    ],
+    description: "very good pancake recipe omg amazing",
+    createdAt: new Date(),
+    uid: "kaytid",
+  },
+  {
+    name: "Pancakes",
+    ingredients: [
+      {
+        quantity: 4,
+        volume: "whole",
+        ingredient: "Egg",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Paprika",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Onion",
+      },
+    ],
+    description: "very good pancake recipe omg amazing",
+    createdAt: new Date(),
+    uid: "kaytid",
+  },
+  {
+    name: "Pancakes",
+    ingredients: [
+      {
+        quantity: 4,
+        volume: "whole",
+        ingredient: "Egg",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Paprika",
+      },
+      {
+        quantity: 1,
+        volume: "whole",
+        ingredient: "Onion",
+      },
+    ],
+    description: "very good pancake recipe omg amazing",
+    createdAt: new Date(),
+    uid: "kaytid",
+  },
 ];

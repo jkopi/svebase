@@ -1,21 +1,24 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import mockrecipes from "../../mockdata/mockrecipes";
+  import Container from "../Container.svelte";
 
   onMount(() => {
     console.log(JSON.stringify(mockrecipes));
   });
 </script>
 
-<div class="flex flex-col">
-  {#each mockrecipes as recipe}
+<Container>
+  {#each mockrecipes as recipe, id}
     <div
-      class="py-8 px-4 m-1 w-96 border border-green-500 shadow-lg rounded-xl"
+      class="py-8 px-4 m-1 w-full border border-green-500 shadow-lg rounded-xl"
     >
+      <h1>{recipe.name}</h1>
       <p>{recipe.name}</p>
+      <a href="/#/recipe/{id}">{id}</a>
     </div>
   {/each}
-</div>
+</Container>
 
 <style>
 </style>

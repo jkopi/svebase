@@ -1,4 +1,4 @@
 <script lang="ts">
 </script>
 
-<section>asd</section>
+<div>Food recipes</div>

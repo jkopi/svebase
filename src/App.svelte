@@ -2,10 +2,22 @@
   import Router from "svelte-spa-router";
   import Navigation from "./components/Navigation/Navigation.svelte";
   import routes from "./components/Navigation/Routes";
+  import { loggedIn$ } from "./config/firebase";
+  import type { User } from "./interfaces/User";
+  let nimi;
+
+  // like, share and subscribe
+  loggedIn$.subscribe((user: User) => {
+    nimi = user.uid;
+  });
 </script>
 
 <main>
   <Navigation />
+  <div>
+    <p>{nimi}</p>
+    <p>HALHALHLA</p>
+  </div>
   <Router {routes} />
 </main>
 

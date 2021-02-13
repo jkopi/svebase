@@ -1,23 +1,18 @@
 <script lang="ts">
-  import {
-    faHamburger,
-    faUserAlt,
-    faUtensils,
-  } from "@fortawesome/free-solid-svg-icons";
   import { onMount } from "svelte";
+  import { faHamburger, faUtensils } from "@fortawesome/free-solid-svg-icons";
   import { link } from "svelte-spa-router";
-  import { signIn, signOut, auth } from "../../config/firebase";
+  import { signOut, auth } from "../../config/firebase";
   import Icon from "../Icon.svelte";
   import LoginButton from "../LoginButton.svelte";
   import AuthSelector from "../AuthSelector.svelte";
   import type { User } from "../../interfaces/User";
+  import { authState } from "rxfire/auth";
 
   let currentUser: User | null;
 
-  auth.onAuthStateChanged((u) => (currentUser = u));
-
   onMount(() => {
-    console.log(currentUser);
+    authState(auth).subscribe((u) => (currentUser = u));
   });
 </script>
 
@@ -46,23 +41,23 @@
           >
             <li>
               <a
-                href="/#/user/{currentUser.uid}"
+                href="/user/{currentUser.uid}"
                 class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
-                >Profile</a
+                use:link>Profile</a
               >
             </li>
             <li>
               <a
-                href="/#/recipes"
+                href="/recipes"
                 class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
-                >My recipes</a
+                use:link>My recipes</a
               >
             </li>
             <li>
               <a
-                href="/#/create"
+                href="/create-recipe"
                 class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
-                >Create a recipe</a
+                use:link>Create a recipe</a
               >
             </li>
           </ul>

@@ -10,12 +10,12 @@
 <div class="relative">
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 block h-10 w-32 rounded-lg overflow-hidden border-gray-600 focus:outline-none"
+    class="relative z-10 block h-10 w-32 rounded-lg overflow-hidden  focus:outline-none"
   >
     <div class="inline-flex items-center space-x-2">
-      <span><Icon icon={faUser} iconSize="md" /></span>
+      <span><Icon icon={faUser} iconSize="md" iconColor="red" /></span>
       <p>Sign in</p>
-      <span><Icon icon={faCaretDown} iconSize="md" /></span>
+      <span><Icon icon={faCaretDown} iconSize="md" iconColor="grey" /></span>
     </div>
   </button>
   {#if isOpen}

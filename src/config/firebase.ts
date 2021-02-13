@@ -2,40 +2,35 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { authState } from "rxfire/auth";
-import { filter } from "rxjs/operators";
+import type { Observable } from 'rxjs';
+import { filter, map } from "rxjs/operators";
+import type { User } from '../interfaces/User';
 import config from "./config";
 
-firebase.initializeApp(config);
-
-export const auth = firebase.auth();
+const app = firebase.initializeApp(config);
+export const auth = app.auth();
+export const db = firebase.firestore();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-export const db = firebase.firestore();
+/* maybe redundant, keeping just in case */
+export const loggedUser$ = authState(auth)
+  .pipe(filter((u: User) => u !== null))
+  .subscribe((u: User) => {
+    console.log("user yes?", u)
+  });
 
-let user;
-//
-//const unsubscribe = authState(auth).subscribe((u) => (user = u));
+/* observe logged in user */
+export const loggedIn$ = authState(auth).pipe(filter((user: User) => !!user));
 
-export const loggedUser = authState(auth)
-  .pipe(filter((u) => u !== null))
-  .subscribe((u) => console.log("logged in user: ", u));
 
+/* Maybe should move dese, dunno... */
 export const signIn = () => {
   auth.signInWithPopup(googleProvider).then(r => {
-    user = r.user;
+    console.log("signed in w/ google")
   });
 };
 
 export const signOut = () => {
-  auth.signOut()
+  auth.signOut();
+  window.location.reload();
 };
-
-//const app = firebase.initializeApp(config);
-//const auth = firebase.auth(app);
-//const googleProvider = new firebase.auth.GoogleAuthProvider();
-//const db = firebase.firestore(app);
-//const loggedIn$ = authState(auth).pipe(filter(user => !!user));
-//
-//export { app, auth, googleProvider, db, loggedIn$ };
-//
-//export default firebase;
