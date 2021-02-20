@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { faHamburger, faUtensils } from "@fortawesome/free-solid-svg-icons";
   import { link } from "svelte-spa-router";
-  import { signOut, auth } from "../../config/firebase";
+  import { auth } from "../../config/firebase";
   import Icon from "../Icon.svelte";
   import LoginButton from "../LoginButton.svelte";
   import AuthSelector from "../AuthSelector.svelte";
@@ -43,7 +43,7 @@
               <a
                 href="/user/{currentUser.uid}"
                 class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
-                use:link>Profile</a
+                use:link>My Profile</a
               >
             </li>
             <li>
@@ -68,14 +68,12 @@
             <li
               class="lg:p-4 py-3 px-0 block border-b-2 border-transparent cursor-default"
             >
-              <AuthSelector />
+              Not authenticated
             </li>
           </ul>
         {/if}
       </nav>
-      {#if currentUser}
-        <LoginButton on:auth={signOut}>Log out</LoginButton>
-      {/if}
+      <AuthSelector />
     </div>
   </header>
 </section>

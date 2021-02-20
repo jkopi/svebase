@@ -1,4 +1,14 @@
 import { writable } from "svelte/store";
+import type { Recipe } from "../interfaces/Recipe";
 
-export const recipes = writable([]);
-export const timeout = writable(false);
+function recipeStore() {
+  const { subscribe, set } = writable<Recipe[]>([]);
+  return {
+    subscribe,
+    setRecipes: (recipes: Recipe[]) => {
+      set(recipes)
+    }
+  }
+}
+
+export const recipe = recipeStore();

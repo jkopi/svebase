@@ -4,25 +4,19 @@
   import { auth } from "../../config/firebase";
   import Container from "../Container.svelte";
   import type { Recipe } from "../../interfaces/Recipe";
+  import { inputs } from "../../store/input";
+  import { createRecipe } from "../../recipes";
+
   let values: Recipe;
 
-  let list: HTMLLIElement;
-
-  let count: number = 0;
-  $: inputCount = count;
-
-  const handleCount = () => {
-    count += 1;
-    console.log(inputCount);
-  };
-  const addInput = () => {
-    // hmmmm
-    //let customElement: any = customElements.define(
-    //  "input",
-    //  IngredientInput as any
-    //);
-    let asd = document.createElement("li");
-    list.appendChild(asd);
+  const handleSubmit = () => {
+    if (auth === null) {
+      return false;
+    }
+    console.log(auth.currentUser.uid);
+    values = { ...values, uid: auth.currentUser.uid };
+    console.log(values);
+    //createRecipe(values);
   };
 </script>
 
@@ -43,16 +37,7 @@
         <label for="ingredient" class="block text-md font-medium text-gray-700">
           Ingredients
         </label>
-        <ul>
-          <li><IngredientInput /></li>
-        </ul>
-        <button
-          class="block h-8 w-20 my-2 rounded-lg focus:outline-none focus:border-orange-900"
-          type="button"
-          on:click={() => {
-            handleCount();
-          }}>Add row</button
-        >
+        <svelte:component this={IngredientInput} />
       </div>
 
       <div class="mt-1">
@@ -75,8 +60,7 @@
           class="h-8 w-20 rounded-lg focus:outline-none focus:border-orange-900"
           type="button"
           on:click={() => {
-            console.log(auth.currentUser);
-            values = { ...values, uid: "hello world" };
+            handleSubmit();
           }}
         >
           Create
@@ -105,10 +89,5 @@
   fieldset {
     padding: 10px 0;
     border: none;
-  }
-
-  .name-input {
-    color: black;
-    font-weight: bolder;
   }
 </style>

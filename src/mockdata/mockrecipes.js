@@ -8,13 +8,13 @@ export default [
         ingredient: "Egg",
       },
       {
-        quantity: 1,
-        volume: "whole",
+        quantity: 150,
+        volume: "g",
         ingredient: "Paprika",
       },
       {
-        quantity: 1,
-        volume: "whole",
+        quantity: 100,
+        volume: "g",
         ingredient: "Onion",
       },
     ],
@@ -23,30 +23,30 @@ export default [
     uid: "kaytid",
   },
   {
-    name: "Peking duck",
+    name: "Chicken pasta",
     ingredients: [
       {
-        quantity: 4,
-        volume: "whole",
-        ingredient: "Egg",
+        quantity: 700,
+        volume: "g",
+        ingredient: "chicken",
       },
       {
-        quantity: 1,
-        volume: "whole",
-        ingredient: "Paprika",
+        quantity: 2,
+        volume: "dl",
+        ingredient: "cooking cream",
       },
       {
-        quantity: 1,
-        volume: "whole",
-        ingredient: "Onion",
+        quantity: 500,
+        volume: "g",
+        ingredient: "pasta",
       },
     ],
-    description: "amazing gourmet food with duck",
+    description: "amazing pasta yes amazing",
     createdAt: new Date(),
     uid: "kaytid",
   },
   {
-    name: "Chicken soup",
+    name: "Soup",
     ingredients: [
       {
         quantity: 4,
@@ -138,7 +138,7 @@ export default [
     uid: "kaytid",
   },
   {
-    name: "Pancakes",
+    name: "Cheese macaroni",
     ingredients: [
       {
         quantity: 4,
@@ -161,7 +161,7 @@ export default [
     uid: "kaytid",
   },
   {
-    name: "Pancakes",
+    name: "Spinach pancakes",
     ingredients: [
       {
         quantity: 4,
