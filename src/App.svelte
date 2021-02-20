@@ -14,10 +14,6 @@
 
 <main>
   <Navigation />
-  <div>
-    <p>{nimi}</p>
-    <p>HALHALHLA</p>
-  </div>
   <Router {routes} />
 </main>
 

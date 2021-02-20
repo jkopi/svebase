@@ -26,6 +26,3 @@
     </div>
   {/each}
 </Container>
-
-<style>
-</style>

@@ -29,7 +29,7 @@
 
   const signOut = () => {
     auth.signOut();
-    window.location.reload();
+    isOpen = false;
   };
 </script>
 
@@ -68,9 +68,9 @@
         >
       {:else}
         <span
-          on:click={() => console.log("TODO: new user creation")}
           class="block px-4 py-2 cursor-pointer text-gray-800 hover:bg-orange-700 hover:text-white"
-          >New user</span
+          ><a href="/#/login" on:click={() => (isOpen = false)}>Sign up</a
+          ></span
         >
         <span
           on:click={() => signIn()}
