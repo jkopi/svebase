@@ -1,10 +1,12 @@
 <script lang="ts">
-    import RecipeList from "../components/RecipeList/List.svelte";
+  import Grid from "../components/RecipeGrid/Grid.svelte";
+  import List from "../components/RecipeList/List.svelte";
 </script>
 
-<main>
-	<RecipeList/>
-</main>
+<svelte:head>
+  <title>Recipe App</title>
+</svelte:head>
 
-<style>
-</style>
+<div class="md:container md:mx-auto">
+  <List />
+</div>

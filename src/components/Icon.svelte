@@ -3,7 +3,7 @@
 
   import Fa from "svelte-fa";
   export let icon: IconDefinition;
-  export let iconSize: string;
+  export let iconSize;
   export let iconColor: string;
 </script>
 

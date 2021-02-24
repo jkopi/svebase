@@ -1,65 +1,28 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { collectionId } from "../../config/firebase";
+  import mockrecipes from "../../mockdata/mockrecipes";
+  import Container from "../Container.svelte";
+  import { recipe } from "../../store/recipe";
 
-  let dataz = [
-    {
-      name: "omelette with paprika",
-      ingredients: [
-        {
-          quantity: 4,
-          volume: "whole",
-          ingredient: "Egg",
-        },
-        {
-          quantity: 1,
-          volume: "whole",
-          ingredient: "Paprika",
-        },
-        {
-          quantity: 1,
-          volume: "whole",
-          ingredient: "Onion",
-        },
-      ],
-      description: "easy omelette with paprika and onions",
-      createdAt: new Date(),
-      uid: "kaytid",
-    },
-    {
-      name: "Meat stew",
-      ingredients: [
-        {
-          quantity: 4,
-          volume: "whole",
-          ingredient: "Egg",
-        },
-        {
-          quantity: 1,
-          volume: "whole",
-          ingredient: "Paprika",
-        },
-        {
-          quantity: 1,
-          volume: "whole",
-          ingredient: "Onion",
-        },
-      ],
-      description: "easy omelette with paprika and onions",
-      createdAt: new Date(),
-      uid: "kaytid",
-    },
-  ];
+  const ran = () => {
+    return "_" + Math.random().toString(36).substr(2, 9);
+  };
 
   onMount(() => {
-    console.log(JSON.stringify(dataz));
+    console.log("bli blo");
   });
 </script>
 
-<ul>
-  {#each dataz as recipe}
-    <li>{recipe.name}, {recipe.createdAt}</li>
+<Container>
+  <button on:click={() => console.log(collectionId)}>test</button>
+  {#each mockrecipes as recipe}
+    <div
+      class="py-8 px-4 m-1 w-full border border-green-500 shadow-lg rounded-xl"
+    >
+      <h1>{recipe.name}</h1>
+      <p>{recipe.name}</p>
+      <a href="/#/recipe/">asd</a>
+    </div>
   {/each}
-</ul>
-
-<style>
-</style>
+</Container>
