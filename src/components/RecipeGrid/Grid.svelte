@@ -1,10 +1,10 @@
 <script lang="ts">
   import GridItem from "./GridItem.svelte";
-  import mockrecipes from "../../mockdata/mockrecipes";
+  import { recipe } from "../../store/recipe";
 </script>
 
-<div class="grid grid-cols-4 gap-2 my-2">
-  {#each mockrecipes as recipe}
-    <GridItem data={recipe.name} />
+<div class="flex flex-wrap overflow-hidden -mx-1">
+  {#each $recipe as item (item.id)}
+    <GridItem data={item} />
   {/each}
 </div>

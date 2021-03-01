@@ -1,19 +1,11 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { faHamburger, faUtensils } from "@fortawesome/free-solid-svg-icons";
   import { link } from "svelte-spa-router";
-  import { auth } from "../../config/firebase";
   import Icon from "../Icon.svelte";
-  import LoginButton from "../LoginButton.svelte";
   import AuthSelector from "../AuthSelector.svelte";
   import type { User } from "../../interfaces/User";
-  import { authState } from "rxfire/auth";
 
-  let currentUser: User | null;
-
-  onMount(() => {
-    authState(auth).subscribe((u) => (currentUser = u));
-  });
+  export let currentUser: User | null;
 </script>
 
 <section>
@@ -29,23 +21,15 @@
       <Icon icon={faHamburger} iconSize="lg" iconColor="orange" />
     </label>
     <input type="checkbox" class="hidden" id="menu-toggle" />
-    <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+    <div class="p-2 hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
       <!--
-        TODO: 
-        - Add routings for recipe views
+        Leave this out for now.. think of use later..
       -->
-      <nav>
+      <!-- <nav>
         {#if currentUser}
           <ul
             class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0"
           >
-            <li>
-              <a
-                href="/user/{currentUser.uid}"
-                class="link lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-amber-800"
-                use:link>My Profile</a
-              >
-            </li>
             <li>
               <a
                 href="/recipes"
@@ -72,7 +56,7 @@
             </li>
           </ul>
         {/if}
-      </nav>
+      </nav> -->
       <AuthSelector />
     </div>
   </header>

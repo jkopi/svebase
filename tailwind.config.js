@@ -138,6 +138,9 @@ module.exports = {
         900: '#702459',
       },
     },
+    placeholderColor: {
+      'primary': '#000'
+    },
     spacing: {
       px: '1px',
       '0': '0',

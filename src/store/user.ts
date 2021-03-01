@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 import type { User } from "../interfaces/User";
 
-// testing testing and so on..
+// not used
 function userStore() {
   let user: User | null;
   const { subscribe, set, update } = writable<User>(user);
@@ -15,5 +15,3 @@ function userStore() {
 }
 
 export const user = userStore();
-
-//export const userStore = writable<User>({ uid: "ASD", displayName: "", photoURL: "" });

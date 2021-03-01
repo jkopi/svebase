@@ -1,10 +1,6 @@
 <script lang="ts">
-
 </script>
 
-<main>
-  404 NOT FOUND
-</main>
-
-<style>
-</style>
+<div class="flex justify-center">
+  <p class="text-4xl">404 not found</p>
+</div>
