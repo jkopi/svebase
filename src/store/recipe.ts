@@ -3,6 +3,7 @@ import type { Recipe } from "../interfaces/Recipe";
 
 function recipeStore() {
   const { subscribe, set } = writable<Recipe[]>([]);
+
   return {
     subscribe,
     setRecipes: (recipes: Recipe[]) => {

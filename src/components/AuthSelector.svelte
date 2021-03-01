@@ -11,6 +11,7 @@
 
   let currentUser: User | null;
 
+  // probably not the best way but it works for now
   onMount(() => {
     authState(auth).subscribe((u) => {
       if (u === null) {
@@ -36,7 +37,7 @@
 <div class="relative">
   <button
     on:click={() => (isOpen = !isOpen)}
-    class="relative z-10 block h-10 px-5 rounded-lg overflow-hidden  focus:outline-none"
+    class="relative z-1+ block h-10 px-5 rounded-lg overflow-hidden  focus:outline-none"
   >
     <div class="inline-flex items-center space-x-2">
       <span><Icon icon={faUser} iconSize="md" iconColor="red" /></span>
@@ -57,7 +58,7 @@
   {/if}
   {#if isOpen}
     <div
-      class="absolute right-2 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl"
+      class="absolute z-10 right-2 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl"
       transition:fade
     >
       {#if currentUser}

@@ -1,13 +1,7 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import { auth } from "../config/firebase";
 
-  onMount(() => {
-    console.log("LOGIN");
-  });
-
-  // todo: https://svelte.dev/tutorial/text-inputs
-  // bind values to inputs and so on..
+  // TODO: implement user creation
   const signUp = (email, pass) => {
     console.log("me not that kind of orc");
     auth.createUserWithEmailAndPassword(email, pass).catch((err) => {
@@ -40,6 +34,6 @@
   <button
     class="block w-full my-4 p-2 rounded-lg bg-amber-300 focus:outline-none"
     type="button"
-    on:click={() => signUp()}>Submit</button
+    on:click={() => console.log("nothing happens")}>Submit</button
   >
 </div>

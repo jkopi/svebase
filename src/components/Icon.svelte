@@ -8,7 +8,3 @@
 </script>
 
 <Fa {icon} size={iconSize} color={iconColor} />
-
-<style>
-  /**/
-</style>

@@ -1,16 +1,19 @@
 import { db } from './config/firebase'
-import { collectionData } from 'rxfire/firestore'
-import type firebase from 'firebase/app'
-import { startWith } from 'rxjs/operators'
 import type { Recipe } from './interfaces/Recipe'
 
-const recipeCollection = db.collection("recipe")
-const query = db.collection("recipe").orderBy("uid");
-export const recipeResult = collectionData(query).pipe(startWith([]));
+const recipeCollection = db.collection("recipe");
 
-export async function createRecipe(rec: Recipe) {
+export const createRecipe = async (rec: Recipe) => {
   if (!rec) return;
   await recipeCollection.add({
     ...rec
   });
+}
+
+export const deleteRecipe = async (rec: Recipe) => {
+  await recipeCollection.doc(rec.id).delete();
+}
+
+export const updateRecipe = async (rec: Recipe) => {
+  // TODO: implement this
 }
