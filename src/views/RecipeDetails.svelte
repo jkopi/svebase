@@ -38,6 +38,10 @@
   };
 </script>
 
+<svelte:head>
+  <title>{currentRecipe?.name}</title>
+</svelte:head>
+
 <Container>
   <h1 class="p-4 text-4xl">{currentRecipe?.name}</h1>
   <div class="lg:w-1/2 lg:h-1/2 m-auto">

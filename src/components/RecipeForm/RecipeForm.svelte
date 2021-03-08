@@ -27,6 +27,7 @@
   });
 
   // image upload
+  // need to fix, not good
   const upload = async (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
@@ -76,7 +77,11 @@
       </fieldset>
       <fieldset>
         <label>
-          <input name="image" type="file" accept="image/*" on:change={upload} />
+          <input
+            name="image"
+            type="file"
+            accept="image/*"
+          /><!--on:change={upload}-->
         </label>
       </fieldset>
       <div class="mt-1 input">

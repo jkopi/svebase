@@ -7,18 +7,20 @@
   import Notifications from "svelte-notifications";
   import Navigation from "./components/Navigation/Navigation.svelte";
   import routes from "./components/Navigation/Routes";
+  import Info from "./components/Info.svelte";
 
-  let currentUser: User | null;
+  // let currentUser: User | null;
 
   // probably not the best way but it works for now
-  onMount(() => {
-    authState(auth).subscribe((u) => (currentUser = u));
-  });
+  // onMount(() => {
+  //   authState(auth).subscribe((u) => (currentUser = u));
+  // });
 </script>
 
 <main>
   <Notifications>
-    <Navigation {currentUser} />
+    <!-- <Navigation {currentUser} /> -->
+    <Info />
     <Router {routes} />
   </Notifications>
 </main>

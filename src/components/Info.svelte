@@ -1,10 +1,14 @@
 <script lang="ts">
   import Container from "./Container.svelte";
-  export let displayName: any;
 </script>
 
-<Container>
-  {#if displayName}
+<div class="flex flow-row my-2 md:container md:mx-auto">
+  <h2>All recipes</h2>
+  <button class="justify-end">Create new</button>
+  <hr class="border-1 border-amber-700" />
+</div>
+
+<!-- {#if displayName}
     <div class="flex p-4 justify-between">
       <p>Welcome, {displayName}</p>
       <button
@@ -13,12 +17,4 @@
         <a href="/#/create-recipe" class="link">Create recipe</a>
       </button>
     </div>
-  {/if}
-</Container>
-
-<style>
-  .link {
-    color: black;
-    text-decoration: none;
-  }
-</style>
+  {/if} -->

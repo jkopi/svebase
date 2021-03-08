@@ -19,8 +19,5 @@
 </svelte:head>
 
 <div class="md:container md:mx-auto">
-  <Info {...data} />
-  <h2>All recipes</h2>
-  <hr class="m-2 border-1 border-amber-700" />
   <Grid />
 </div>
