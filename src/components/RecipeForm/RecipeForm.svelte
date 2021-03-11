@@ -39,6 +39,7 @@
 
   const preview = (e) => {
     previewImage = URL.createObjectURL(e.target.files[0]);
+    console.log(previewImage);
   };
 
   const handleSubmit = () => {
@@ -78,7 +79,7 @@
             type="file"
             accept="image/*"
             on:change={preview}
-          /><!--on:change={upload}-->
+          />
         </label>
       </fieldset>
       <div class="preview">
@@ -90,10 +91,10 @@
         </label>
 
         <ul class="list-disc list-inside m-2">
-          {#each ingredients as ing}
+          {#each ingredients as ingredient}
             <li class="flex-row">
               <span class="space-x-10 text-lg"
-                >{ing.quantity} {ing.ingredient}</span
+                >{ingredient.quantity} {ingredient.ingredient}</span
               >
             </li>
           {/each}

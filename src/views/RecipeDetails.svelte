@@ -18,7 +18,7 @@
   onMount(() => {
     recipe.subscribe((resp) => {
       resp.find((x) => {
-        if (x.id === params.id) {
+        if (x.name === params.name) {
           currentRecipe = x;
           ingredients = x.ingredients;
         }
@@ -43,6 +43,11 @@
   {#if !currentRecipe}
     <p>Loading...</p>
   {:else}
+    <span>
+      <a href="/#/">Recipes</a>
+      /
+      <a href="/#/recipe/{currentRecipe?.name}">{currentRecipe?.name}</a>
+    </span>
     <h1 class="p-4 text-4xl">{currentRecipe?.name}</h1>
     <div class="lg:w-1/2 lg:h-1/2 m-auto">
       {#if currentRecipe?.image}
@@ -61,7 +66,7 @@
       <table class="table-auto w-full my-4">
         <tbody>
           {#each ingredients as ingredient}
-            <tr>
+            <tr class="transition duration-100 hover:bg-amber-100">
               <td class="px-2">
                 <span>{ingredient?.quantity}</span>
               </td>

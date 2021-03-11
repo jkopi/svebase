@@ -11,7 +11,7 @@ const routes = {
   '/login': wrap({
     component: Login
   }),
-  '/recipe/:id': RecipeDetails,
+  '/recipe/:name': RecipeDetails,
   '/create-recipe': wrap({
     component: RecipeForm,
   }),
