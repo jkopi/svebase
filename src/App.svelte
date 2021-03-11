@@ -4,7 +4,6 @@
   import { auth } from "./config/firebase";
   import type { User } from "./interfaces/User";
   import Router from "svelte-spa-router";
-  import Notifications from "svelte-notifications";
   import Navigation from "./components/Navigation/Navigation.svelte";
   import routes from "./components/Navigation/Routes";
   import Info from "./components/Info.svelte";
@@ -18,11 +17,9 @@
 </script>
 
 <main>
-  <Notifications>
-    <!-- <Navigation {currentUser} /> -->
-    <Info />
-    <Router {routes} />
-  </Notifications>
+  <!-- <Navigation {currentUser} /> -->
+  <Info />
+  <Router {routes} />
 </main>
 
 <style>

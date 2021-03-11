@@ -6,12 +6,10 @@
   import { onMount } from "svelte";
   import { createRecipe } from "../../recipes";
   import { storageRef } from "../../config/firebase";
-  import { getNotificationsContext } from "svelte-notifications";
-
-  const { addNotification } = getNotificationsContext();
 
   let values;
   let image;
+  let previewImage;
 
   let ingredients = [];
   let ingredientValues = {
@@ -39,19 +37,17 @@
     console.log("image in input:", image);
   };
 
+  const preview = (e) => {
+    previewImage = URL.createObjectURL(e.target.files[0]);
+  };
+
   const handleSubmit = () => {
     let id = randomId();
     let createdAt = Date.now();
     values = { createdAt, id, ...values, ingredients, image }; //, uid: auth.currentUser.uid
 
     console.log(values);
-    addNotification({
-      text: "Recipe Created",
-      position: "bottom-center",
-      type: "success",
-      removeAfter: 3000,
-    });
-    createRecipe(values);
+    //createRecipe(values);
     // reset form values
     values = {};
   };
@@ -81,9 +77,13 @@
             name="image"
             type="file"
             accept="image/*"
+            on:change={preview}
           /><!--on:change={upload}-->
         </label>
       </fieldset>
+      <div class="preview">
+        <img src={previewImage} alt="preview" class="w-64 h-64" />
+      </div>
       <div class="mt-1 input">
         <label for="ingredient" class="block text-xl font-medium text-gray-700">
           Ingredients

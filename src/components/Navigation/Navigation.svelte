@@ -4,8 +4,6 @@
   import Icon from "../Icon.svelte";
   import AuthSelector from "../AuthSelector.svelte";
   import type { User } from "../../interfaces/User";
-
-  export let currentUser: User | null;
 </script>
 
 <section>
