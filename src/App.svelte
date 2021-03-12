@@ -2,16 +2,9 @@
   import Router from "svelte-spa-router";
   import routes from "./components/Navigation/Routes";
   import Info from "./components/Info.svelte";
-
-  // let currentUser: User | null;
-
-  // probably not the best way but it works for now
-  // onMount(() => {
-  //   authState(auth).subscribe((u) => (currentUser = u));
-  // });
 </script>
 
-<main>
+<main class="font-sans">
   <Info />
   <Router {routes} />
 </main>

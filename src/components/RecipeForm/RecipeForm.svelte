@@ -45,10 +45,10 @@
   const handleSubmit = () => {
     let id = randomId();
     let createdAt = Date.now();
-    values = { createdAt, id, ...values, ingredients, image }; //, uid: auth.currentUser.uid
+    values = { createdAt, id, ...values, ingredients }; //, uid: auth.currentUser.uid image
 
     console.log(values);
-    //createRecipe(values);
+    createRecipe(values);
     // reset form values
     values = {};
   };
@@ -91,10 +91,10 @@
         </label>
 
         <ul class="list-disc list-inside m-2">
-          {#each ingredients as ingredient}
+          {#each $ingredientStorage as ingredient, i}
             <li class="flex-row">
               <span class="space-x-10 text-lg"
-                >{ingredient.quantity} {ingredient.ingredient}</span
+                >{i} | {ingredient.quantity} {ingredient.ingredient}</span
               >
             </li>
           {/each}
@@ -112,21 +112,22 @@
           class="mt-1 p-2 rounded-lg focus:outline-none focus:border-orange-900 shadow-md border-gray-600"
           bind:value={ingredientValues.ingredient}
         />
-        <button
-          type="button"
-          class="flex h-8 px-2 my-2 rounded-lg focus:outline-none focus:border-orange-900 border-amber-600"
-          on:click={() => {
-            ingredientStorage.addIngredient(
-              ingredientValues.quantity,
-              ingredientValues.ingredient
-            );
-            console.log(ingredients);
-            console.log("------//------");
-            console.log(ingredientValues);
-          }}>Add ingredient</button
-        >
       </div>
 
+      <button
+        type="button"
+        class="h-8 px-2 my-2 rounded-lg focus:outline-none focus:border-orange-900 border-amber-600"
+        on:click={() => {
+          ingredientStorage.addIngredient(
+            ingredientValues.quantity,
+            ingredientValues.ingredient
+          );
+          console.log(ingredients);
+          console.log("------//------");
+          console.log(ingredientValues);
+          ingredientValues = { quantity: "", ingredient: "" };
+        }}>Add ingredient</button
+      >
       <div class="mt-1">
         <label
           for="description"

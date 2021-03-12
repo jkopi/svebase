@@ -7,6 +7,10 @@ export const createRecipe = async (rec: Recipe) => {
   if (!rec) return;
   await recipeCollection.add({
     ...rec
+  }).then((res) => {
+    console.log("success!", res);
+  }).catch((err) => {
+    console.error("virhe!",err);
   });
 }
 

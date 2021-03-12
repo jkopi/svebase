@@ -9,7 +9,7 @@
   h2 {
     @apply text-xl;
   }
-  ::placeholder {
-    @apply opacity-100;
+  input::placeholder {
+    @apply text-gray-700;
   }
 }

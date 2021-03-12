@@ -22,9 +22,8 @@
     </a>
     <header class="flex items-center justify-between leading-tight p-2 md:p-4">
       <h1 class="text-lg">
-        <a
-          href="/#/recipe/{data.name}"
-          class="no-underline font-bold text-gray-700">{data.name}</a
+        <a href="/#/recipe/{data.name}"
+          ><span class="font-bold text-black">{data.name}</span></a
         >
       </h1>
     </header>

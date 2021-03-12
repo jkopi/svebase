@@ -9,6 +9,6 @@ export interface Recipe {
   image?: string;
   ingredients: Array<ingredient>
   description?: string;
-  createdAt?: Date;
-  uid: string;
+  createdAt: Date;
+  uid?: string;
 }

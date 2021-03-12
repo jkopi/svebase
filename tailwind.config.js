@@ -92,9 +92,7 @@ module.exports = {
         900: "#3c366b",
       },
     },
-    placeholderColor: {
-      primary: "#000",
-    },
+    placeholderColor: (theme) => theme("colors"),
     spacing: {
       px: "1px",
       0: "0",
@@ -452,8 +450,4 @@ module.exports = {
   },
   corePlugins: {},
   plugins: [],
-  purge: {
-    enabled: true,
-    content: ["./src/**/*.svelte"],
-  },
 };
